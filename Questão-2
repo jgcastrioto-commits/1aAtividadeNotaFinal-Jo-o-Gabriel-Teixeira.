@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora</title>
+
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: black;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .calculator {
+      background-color: black;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      text-align: center;
+      width: 320px;
+    }
+
+    .display {
+      background-color: #1e1e1e;
+      color: white;
+      font-size: 24px;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      min-height: 50px;
+      text-align: right;
+      box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .button {
+      border: none;
+      border-radius: 50%;
+      padding: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .button.dark-gray {
+      background-color: gray;
+      color: white;
+    }
+
+    .button.orange {
+      background-color: rgb(236, 137, 6);
+      color: white;
+    }
+
+    .button.light-gray {
+      background-color: rgb(248, 246, 246);
+      color: black;
+    }
+
+    .button:hover {
+      opacity: 0.8;
+    }
+
+    .wide {
+      grid-column: span 2;
+      border-radius: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="display" id="display"></div>
+    <div class="buttons">
+      <button class="button light-gray" onclick="clearDisplay()">C</button>
+      <button class="button light-gray" onclick="appendOperator('%')">%</button>
+      <button class="button light-gray" onclick="appendOperator('.')">.</button>
+      <button class="button orange" onclick="appendOperator('/')">/</button>
+
+      <button class="button dark-gray" onclick="appendNumber('7')">7</button>
+      <button class="button dark-gray" onclick="appendNumber('8')">8</button>
+      <button class="button dark-gray" onclick="appendNumber('9')">9</button>
+      <button class="button orange" onclick="appendOperator('*')">*</button>
+
+      <button class="button dark-gray" onclick="appendNumber('4')">4</button>
+      <button class="button dark-gray" onclick="appendNumber('5')">5</button>
+      <button class="button dark-gray" onclick="appendNumber('6')">6</button>
+      <button class="button orange" onclick="appendOperator('-')">-</button>
+
+      <button class="button dark-gray" onclick="appendNumber('1')">1</button>
+      <button class="button dark-gray" onclick="appendNumber('2')">2</button>
+      <button class="button dark-gray" onclick="appendNumber('3')">3</button>
+      <button class="button orange" onclick="appendOperator('+')">+</button>
+
+      <button class="button dark-gray wide" onclick="appendNumber('0')">0</button>
+      <button class="button orange" onclick="calculate()">=</button>
+    </div>
+  </div>
+
+  <script>
+    let display = document.getElementById("display");
+    let currentInput = "";
+
+    function appendNumber(value) {
+      currentInput += value;
+      display.textContent = currentInput;
+    }
+
+    function appendOperator(operator) {
+      if (currentInput === "" && operator !== ".") return;
+      currentInput += operator;
+      display.textContent = currentInput;
+    }
+
+    function calculate() {
+      try {
+        let result = eval(currentInput);
+        if (!Number.isInteger(result)) {
+          result = result.toFixed(2);
+        }
+        currentInput = result;
+        display.textContent = currentInput;
+      } catch (error) {
+        display.textContent = "Erro";
+        currentInput = "";
+      }
+    }
+
+    function clearDisplay() {
+      currentInput = "";
+      display.textContent = "";
+    }
+  </script>
+</body>
+</html>
