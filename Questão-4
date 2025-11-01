@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de IMC</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: rgb(70, 34, 231);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .input {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 250px;
+      height: 35px;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 250px;
+      height: 45px;
+      font-weight: bold;
+      font-size: 1rem;
+      background: white;
+      color: rgb(70, 34, 231);
+      border: 2px solid rgb(70, 34, 231);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.4s;
+    }
+
+    button:hover {
+      background: rgb(70, 34, 231);
+      color: white;
+    }
+
+    .result {
+      margin-top: 20px;
+      background: white;
+      color: black;
+      padding: 15px;
+      border-radius: 5px;
+      width: 250px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div class="title">Calculadora - IMC</div>
+
+    <div class="input">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" placeholder="Digite seu nome">
+    </div>
+
+    <div class="input">
+      <label for="altura">Altura (em metros):</label>
+      <input type="number" id="altura" step="0.01" placeholder="Ex: 1.75">
+    </div>
+
+    <div class="input">
+      <label for="peso">Peso (em kg):</label>
+      <input type="number" id="peso" step="0.1" placeholder="Ex: 70.5">
+    </div>
+
+    <button id="calcular">Calcular</button>
+
+    <div class="result" id="resultado"></div>
+  </main>
+
+  <script>
+    const calcular = document.getElementById("calcular");
+
+    function obterClassificacao(imc) {
+      if (imc < 18.5) return "abaixo do peso.";
+      else if (imc < 25) return "com peso ideal. Parabéns!";
+      else if (imc < 30) return "levemente acima do peso.";
+      else if (imc < 35) return "com obesidade grau 1.";
+      else if (imc < 40) return "com obesidade grau 2 (severa).";
+      else return "com obesidade grau 3 (mórbida).";
+    }
+
+    function calcularIMC(peso, altura) {
+      return (peso / (altura * altura)).toFixed(1);
+    }
+
+    function imc() {
+      const nome = document.getElementById("nome").value;
+      const altura = parseFloat(document.getElementById("altura").value);
+      const peso = parseFloat(document.getElementById("peso").value);
+      const resultado = document.getElementById("resultado");
+
+      if (nome && altura && peso) {
+        const valorIMC = calcularIMC(peso, altura);
+        const classificacao = obterClassificacao(valorIMC);
+        resultado.textContent = `${nome}, seu IMC é ${valorIMC} e você está ${classificacao}`;
+      } else {
+        resultado.textContent = "Por favor, preencha todos os campos!";
+      }
+    }
+
+    calcular.addEventListener("click", imc);
+  </script>
+</body>
+</html> 
