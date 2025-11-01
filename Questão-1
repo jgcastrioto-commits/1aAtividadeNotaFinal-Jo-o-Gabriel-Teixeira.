@@ -1,0 +1,30 @@
+<title>Perfil Pessoal</title> <style> body { color: rgb(246, 245, 247); background-color: black; font-Family: Arial, helvetica, sans-serif; } nav ul { display: flex; justify-content: space-between; } nav a { color: white; text-decoration: none; font-weight: bold; } .center { text-align: center; } img { width: 350px; height:350px; border-radius: 50%; border: 3px solid rgb(247, 243, 247); } h1, h2 { text-align: center; } </style>
+PROJETOS
+LINKEDIN
+GITHUB
+
+
+João Gabriel Teixeira
+202502518269
+   </header>
+Curso: Analise e Desenvolvimento de Sistemas
+Análise e Desenvolvimento de Sistemas (ADS) é a área da tecnologia da informação (TI) focada na criação, manutenção e evolução de sistemas computacionais e softwares. O processo envolve a análise das necessidades de usuários e empresas, o projeto de soluções, a codificação e a manutenção contínua desses sistemas.
+
+    </section>
+Objetivo Profissional
+trabalhar nas areas de desenvolvimento de sistemas, cibersegurança, banco de dados e computação quantica
+
+    <section>
+        <h3>Linguagens de Programação </h3>
+        <P>
+        C/HTML/CSS/JAVASCRIPT,PHP,PYTHON
+         </p>
+    </section>
+
+    <section>
+        <h3>Sobre mim</h3>
+        <P>
+        Oi, me chamo joão Gabriel sou um aluno da faculdade Estacio de Sa, estou no curso de Analise e Desenvolvimento de Sistemas  busco trabalhar na area de computação quantica,uma area que para muitos pode ser considerada dificil, mais que para mim e algo facinante e misterioso 
+         </p>
+    </section>
+>
